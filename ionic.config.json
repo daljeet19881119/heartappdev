@@ -1,0 +1,8 @@
+{
+  "name": "heartappdev",
+  "app_id": "52285297",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
