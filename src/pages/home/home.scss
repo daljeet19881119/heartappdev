@@ -7,6 +7,9 @@ page-home {
         font-size: 18px;
         font-weight: bold;
     }
+    .button-div{
+        text-align: right;
+    }
     button.more{
         font-weight: bold;
     }
@@ -35,5 +38,11 @@ page-home {
     .inner-profile-container{
         padding-bottom: 5px;
         border-bottom: 1px solid #870226;
+        padding-top: 5px;
+    }
+    .heart-symbol{
+        transform: rotate(270deg);
+        font-size: 16px;
+        font-weight: bold;
     }
 }
