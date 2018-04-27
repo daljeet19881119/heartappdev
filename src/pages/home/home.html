@@ -2,14 +2,15 @@
   <ion-navbar color="AppColor">
       <ion-grid>
           <ion-row>
-              <ion-col col-4 style="background: #9e3f58;">
+              <ion-col col-8>
+                <span style="color: #fff;font-size: 16px;">Balance</span>
                     <ion-slides autoplay="3000" loop="true">
-                        <ion-slide *ngFor="let slide of slideData">
-                            <span style="color: #fff;font-size: 16px;">{{ slide.currency }} <ion-icon name="heart-outline" class="heart-symbol" *ngIf="slide.id==1"></ion-icon></span>
+                        <ion-slide *ngFor="let slide of slideData">                            
+                            <span style="color: #fff;font-size: 16px;float:left">10.24K <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ({{ slide.currency }})</span>
                         </ion-slide>
                     </ion-slides>  
               </ion-col>
-              <ion-col col-8 class="button-div">
+              <ion-col col-4 class="button-div">
                     <button ion-button small color="AppHeader" class="more">
                         <ion-icon name="settings"></ion-icon>
                     </button>
@@ -23,76 +24,105 @@
     <ion-grid>
         <ion-row>
             <ion-col col-9>
-                <span class="latest">Latest payments:</span>
+                <span class="latest" style="background-color:rgba(135,2,38,0.17);padding:5px;">Latest payments:</span>
             </ion-col>
             <ion-col col-3 class="button-div">
-                <button ion-button small color="AppHeader" class="more">More</button>
+                <button ion-button small color="AppHeader" class="more" style="font-size:10px;">More</button>
             </ion-col>
         </ion-row>
         <div class="amount-container">
             <ion-row>
+                <ion-col col-2>
+                    <span class="upper-text">Date</span>
+                </ion-col>
                 <ion-col col-3>
                     <span class="upper-text">Bal.</span>
                 </ion-col>
                 <ion-col col-5>
                     <span class="upper-text">Amount</span>
                 </ion-col>
-                <ion-col col-4>
+                <ion-col col-32>
                     <span class="upper-text">Type</span>
                 </ion-col>
             </ion-row>
             <ion-row>
+                <ion-col col-2>
+                    <span class="row-data">4/20</span>
+                </ion-col>
                 <ion-col col-3>
                     <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
                 </ion-col>
                 <ion-col col-5>
-                    <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($10.00)</span>
+                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.00)</span>
                 </ion-col>
-                <ion-col col-4>
-                    <span class="row-data">Snacks</span>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col col-3>
-                    <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
-                </ion-col>
-                <ion-col col-5>
-                    <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($10.00)</span>
-                </ion-col>
-                <ion-col col-4>
-                    <span class="row-data">Snacks</span>
+                <ion-col col-2>
+                    <span class="row-data" style="font-size:14px;">Restau..</span>
                 </ion-col>
             </ion-row>
             <ion-row>
+                <ion-col col-2>
+                    <span class="row-data">4/17</span>
+                </ion-col>
                 <ion-col col-3>
-                    <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
+                    <span class="row-data">50.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
                 </ion-col>
                 <ion-col col-5>
-                    <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($10.00)</span>
+                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.50)</span>
                 </ion-col>
-                <ion-col col-4>
-                    <span class="row-data">Snacks</span>
+                <ion-col col-2>
+                    <span class="row-data" style="font-size:14px;">Grocer..</span>
                 </ion-col>
             </ion-row>
             <ion-row>
+                <ion-col col-2>
+                    <span class="row-data">4/14</span>
+                </ion-col>
                 <ion-col col-3>
-                    <span class="row-data">400.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
+                    <span class="row-data">60.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
                 </ion-col>
                 <ion-col col-5>
-                    <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($10.00)</span>
+                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.50)</span>
                 </ion-col>
-                <ion-col col-4>
-                    <span class="row-data">Snacks</span>
+                <ion-col col-2>
+                    <span class="row-data" style="font-size:14px;">Gas</span>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-2>
+                    <span class="row-data">4/12</span>
+                </ion-col>
+                <ion-col col-3>
+                    <span class="row-data">70.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
+                </ion-col>
+                <ion-col col-5>
+                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.50)</span>
+                </ion-col>
+                <ion-col col-2>
+                    <span class="row-data" style="font-size:14px;">Snacks</span>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-2>
+                    <span class="row-data">4/10</span>
+                </ion-col>
+                <ion-col col-3>
+                    <span class="row-data">80.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
+                </ion-col>
+                <ion-col col-5>
+                    <span class="row-data">+100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25)</span>
+                </ion-col>
+                <ion-col col-2>
+                    <span class="row-data" style="font-size:14px;">Top-up</span>
                 </ion-col>
             </ion-row>
         </div>
         <div class="profile-container">
             <ion-row>
                 <ion-col col-9>
-                    <span class="latest">Latest donations:</span>
+                    <span class="latest" style="background-color:rgba(135,2,38,0.17);padding:5px;">Latest donations:</span>
                 </ion-col>
                 <ion-col col-3 class="button-div">
-                    <button ion-button small color="AppHeader" class="more">More</button>
+                    <button ion-button small color="AppHeader" class="more" style="font-size:10px;">More</button>
                 </ion-col>
             </ion-row>
             <ion-row>
@@ -112,7 +142,7 @@
                         <span class="row-data">01/04</span>
                     </ion-col>
                     <ion-col col-5>
-                        <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($10.00)</span>
+                        <span class="row-data">100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25.00)</span>
                     </ion-col>
                     <ion-col col-4>
                         <span class="row-data">Phil Kids</span>
@@ -120,7 +150,7 @@
                 </ion-row>
                 <ion-row>
                     <ion-col col-3>
-                        <img class="person" src="assets/imgs/person.jpg" alt="person"/>
+                        <img class="person" src="assets/imgs/PhilKids.png" alt="person"/>
                     </ion-col>
                     <ion-col col-9>
                         <p class="play-para">
@@ -132,18 +162,18 @@
             <div class="inner-profile-container">
                 <ion-row>
                     <ion-col col-3>
-                        <span class="row-data">01/04</span>
+                        <span class="row-data">02/04</span>
                     </ion-col>
                     <ion-col col-5>
-                        <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($10.00)</span>
+                        <span class="row-data">100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25.00)</span>
                     </ion-col>
                     <ion-col col-4>
-                        <span class="row-data">Phil Kids</span>
+                        <span class="row-data">NoToPoverty</span>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col col-3>
-                        <img class="person" src="assets/imgs/person.jpg" alt="person"/>
+                        <img class="person" src="assets/imgs/NoToPoverty.jpg" alt="person"/>
                     </ion-col>
                     <ion-col col-9>
                         <p class="play-para">
@@ -155,18 +185,18 @@
             <div class="inner-profile-container">
                 <ion-row>
                     <ion-col col-3>
-                        <span class="row-data">01/04</span>
+                        <span class="row-data">03/04</span>
                     </ion-col>
                     <ion-col col-5>
-                        <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($10.00)</span>
+                        <span class="row-data">100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25.00)</span>
                     </ion-col>
                     <ion-col col-4>
-                        <span class="row-data">Phil Kids</span>
+                        <span class="row-data">EarthHelp</span>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col col-3>
-                        <img class="person" src="assets/imgs/person.jpg" alt="person"/>
+                        <img class="person" src="assets/imgs/EarthHelp.jpg" alt="person"/>
                     </ion-col>
                     <ion-col col-9>
                         <p class="play-para">
