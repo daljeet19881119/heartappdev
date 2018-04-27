@@ -4,11 +4,18 @@
           <ion-row>
               <ion-col col-8>
                 <span style="color: #fff;font-size: 16px;">Balance</span>
-                    <ion-slides autoplay="3000" loop="true">
-                        <ion-slide *ngFor="let slide of slideData">                            
-                            <span style="color: #fff;font-size: 16px;float:left">10.24K <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ({{ slide.currency }})</span>
-                        </ion-slide>
-                    </ion-slides>  
+                <ion-row>
+                    <ion-col col-4 style="padding-left: 0px;padding-right: 0px;">
+                        <span style="color: #fff;font-size: 14px;float:left">10.24K <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
+                    </ion-col>
+                    <ion-col col-8>
+                        <ion-slides autoplay="3000" loop="true">
+                            <ion-slide *ngFor="let slide of slideData">                            
+                                <span style="color: #fff;font-size: 13px;float:left">({{ slide.currency }})</span>
+                            </ion-slide>
+                        </ion-slides> 
+                    </ion-col>
+                </ion-row>                                         
               </ion-col>
               <ion-col col-4 class="button-div">
                     <button ion-button small color="AppHeader" class="more">
@@ -20,7 +27,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content style="padding:10px;">
     <ion-grid>
         <ion-row>
             <ion-col col-9>
@@ -31,90 +38,24 @@
             </ion-col>
         </ion-row>
         <div class="amount-container">
-            <ion-row>
-                <ion-col col-2>
-                    <span class="upper-text">Date</span>
-                </ion-col>
-                <ion-col col-3>
-                    <span class="upper-text">Bal.</span>
-                </ion-col>
-                <ion-col col-5>
-                    <span class="upper-text">Amount</span>
-                </ion-col>
-                <ion-col col-32>
-                    <span class="upper-text">Type</span>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col col-2>
-                    <span class="row-data">4/20</span>
-                </ion-col>
-                <ion-col col-3>
-                    <span class="row-data">40.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
-                </ion-col>
-                <ion-col col-5>
-                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.00)</span>
-                </ion-col>
-                <ion-col col-2>
-                    <span class="row-data" style="font-size:14px;">Restau..</span>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col col-2>
-                    <span class="row-data">4/17</span>
-                </ion-col>
-                <ion-col col-3>
-                    <span class="row-data">50.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
-                </ion-col>
-                <ion-col col-5>
-                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.50)</span>
-                </ion-col>
-                <ion-col col-2>
-                    <span class="row-data" style="font-size:14px;">Grocer..</span>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col col-2>
-                    <span class="row-data">4/14</span>
-                </ion-col>
-                <ion-col col-3>
-                    <span class="row-data">60.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
-                </ion-col>
-                <ion-col col-5>
-                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.50)</span>
-                </ion-col>
-                <ion-col col-2>
-                    <span class="row-data" style="font-size:14px;">Gas</span>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col col-2>
-                    <span class="row-data">4/12</span>
-                </ion-col>
-                <ion-col col-3>
-                    <span class="row-data">70.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
-                </ion-col>
-                <ion-col col-5>
-                    <span class="row-data">-10.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($2.50)</span>
-                </ion-col>
-                <ion-col col-2>
-                    <span class="row-data" style="font-size:14px;">Snacks</span>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col col-2>
-                    <span class="row-data">4/10</span>
-                </ion-col>
-                <ion-col col-3>
-                    <span class="row-data">80.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
-                </ion-col>
-                <ion-col col-5>
-                    <span class="row-data">+100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25)</span>
-                </ion-col>
-                <ion-col col-2>
-                    <span class="row-data" style="font-size:14px;">Top-up</span>
-                </ion-col>
-            </ion-row>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Bal.</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let payment of latestPayments">
+                        <td>{{payment.date}}</td>
+                        <td>{{payment.balance}} <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></td>
+                        <td>{{payment.heart_amount}} <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> {{'($'+payment.us_amount+')'}}</td>
+                        <td>{{payment.type}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="profile-container">
             <ion-row>
@@ -136,21 +77,21 @@
                     <span class="upper-text">Big <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
                 </ion-col>
             </ion-row>
-            <div class="inner-profile-container">
+            <div class="inner-profile-container" *ngFor="let donation of latestDonations">
                 <ion-row>
                     <ion-col col-3>
-                        <span class="row-data">01/04</span>
+                        <span class="row-data">{{donation.date}}</span>
                     </ion-col>
                     <ion-col col-5>
-                        <span class="row-data">100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25.00)</span>
+                        <span class="row-data" style="font-size: 14px;">{{donation.heart_amount}} <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> {{'($'+donation.us_amount+')'}}</span>
                     </ion-col>
                     <ion-col col-4>
-                        <span class="row-data">Phil Kids</span>
+                        <span class="row-data">{{donation.ngo_name}}</span>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col col-3>
-                        <img class="person" src="assets/imgs/PhilKids.png" alt="person"/>
+                        <img class="person" [src]="donation.img_name" [alt]="donation.ngo_name" (click)="getNgoId(donation.id)"/>
                     </ion-col>
                     <ion-col col-9>
                         <p class="play-para">
@@ -159,52 +100,6 @@
                     </ion-col>
                 </ion-row>
             </div> 
-            <div class="inner-profile-container">
-                <ion-row>
-                    <ion-col col-3>
-                        <span class="row-data">02/04</span>
-                    </ion-col>
-                    <ion-col col-5>
-                        <span class="row-data">100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25.00)</span>
-                    </ion-col>
-                    <ion-col col-4>
-                        <span class="row-data">NoToPoverty</span>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col col-3>
-                        <img class="person" src="assets/imgs/NoToPoverty.jpg" alt="person"/>
-                    </ion-col>
-                    <ion-col col-9>
-                        <p class="play-para">
-                            <ion-icon name="play" class="play-icon"></ion-icon>Play message
-                        </p>                    
-                    </ion-col>
-                </ion-row>
-            </div>
-            <div class="inner-profile-container">
-                <ion-row>
-                    <ion-col col-3>
-                        <span class="row-data">03/04</span>
-                    </ion-col>
-                    <ion-col col-5>
-                        <span class="row-data">100.00 <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> ($25.00)</span>
-                    </ion-col>
-                    <ion-col col-4>
-                        <span class="row-data">EarthHelp</span>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col col-3>
-                        <img class="person" src="assets/imgs/EarthHelp.jpg" alt="person"/>
-                    </ion-col>
-                    <ion-col col-9>
-                        <p class="play-para">
-                            <ion-icon name="play" class="play-icon"></ion-icon>Play message
-                        </p>                    
-                    </ion-col>
-                </ion-row>
-            </div>           
         </div>
     </ion-grid>
 </ion-content>
