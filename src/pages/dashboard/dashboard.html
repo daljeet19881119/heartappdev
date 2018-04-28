@@ -16,30 +16,38 @@
 <ion-content style="padding:4px;">
   <ion-grid>
     <ion-row>
-      <ion-col col-4>
-        <img [src]="ngoImg" [alt]="ngoName" class="ngo-img"/>
-        <span class="row-data">Jackie Onobe</span>
-        <span><ion-icon name="heart-outline" class="heart-symbol"></ion-icon>jackieonobe</span>
+      <ion-col col-4>        
+        <img [src]="ngoCofounderImg" [alt]="ngoCofounder" class="ngo-img"/>
+        <span class="row-data">{{ngoCofounder}}</span>
+        <span><ion-icon name="heart-outline" class="heart-symbol"></ion-icon>{{ngoUser}}</span>
       </ion-col>
       <ion-col col-8 class="btn-col">
-        <div style="background: url('assets/imgs/background.png');height: 80px;"></div>
+        <ion-row style="background-color: #870226;text-align: center;">
+          <ion-col col-4 no-padding>
+            <div [style.backgroundImage]="'url('+ngoImg+')'" class="banner-img"></div>
+          </ion-col>
+          <ion-col col-8>
+            <span class="banner-text">{{ngoName}}</span>
+            <span class="banner-text">{{ngoTagline}}</span>
+          </ion-col>
+        </ion-row>
         <button ion-button small color="AppHeader"><ion-icon name="logo-instagram"></ion-icon>&nbsp;&nbsp;Carousel</button>
         <button ion-button small color="AppHeader">Edit Profile</button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-12>
-        <p class="desc">I am co-founder of NoToPoverty and we focus on helping orphans in Tanzania.</p>
+        <p class="desc">{{ngoDesc}}</p>
       </ion-col>
     </ion-row>
     <ion-row>
         <table>
           <thead>
               <tr>
-                  <th>24</th>
-                  <th>457</th>
-                  <th>325</th>
-                  <th>15</th>
+                  <th>{{ngoCampaigns}}</th>
+                  <th>{{ngoHelpedPeople}}</th>
+                  <th>{{ngoContributors}}</th>
+                  <th>{{ngoTeam}}</th>
               </tr>
           </thead>
           <tbody>
@@ -54,7 +62,7 @@
     </ion-row>
     <ion-row>
       <ion-col col-4 *ngFor="let donation of latestDonations">
-        <img [src]="donation.img_name" [alt]="donation.ngo_name" class="ngo-img" (click)="getNgoId(donation.id)"/>
+        <img [src]="donation.img_name" [alt]="donation.ngo_name" class="ngo-img" (click)="getNgoId(donation.id); showNgoProfile(donation.id)" [ngClass]="id == donation.id ? '2px solid #480226' : 'none'"/>
       </ion-col>
     </ion-row>
   </ion-grid>

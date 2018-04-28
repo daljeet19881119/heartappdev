@@ -1,5 +1,5 @@
 page-dashboard {
-    ion-col.button-div.col{
+    .button-div.col{
         text-align: right;
     }
     .ngo-img{
@@ -16,8 +16,9 @@ page-dashboard {
         font-weight: bold;
     }
     .row-data{
-        font-size: 17px;
+        font-size: 15px;
         font-weight: 500;
+        display: block;
     }
     .btn-col{
         text-align: right;
@@ -29,12 +30,25 @@ page-dashboard {
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
         width: 100%;
+        margin-bottom: 5px;
     }
     td, th{
         padding: 4px;
         border-right: 1px solid #ddd;
+        text-align: center;
     }
     td:nth-child(4), th:nth-child(4){
         border-right: none;
     }
+    .banner-img{       
+        height: 80px;
+        background-position: center!important;
+        background-size: cover!important;
+    }
+    .banner-text{
+        display: block;
+        margin: 5px 0;
+        color: #ffffff;
+    }
+    
 }

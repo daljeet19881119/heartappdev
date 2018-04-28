@@ -16,8 +16,17 @@ export class DashboardPage {
 
   // variable id for ngo profile
   id: any;
-  ngoName: string = '';
+  ngoName: string = 'Loading...';
+  ngoTagline: string = 'Loading...';
   ngoImg: string = 'assets/imgs/background.png';
+  ngoCampaigns: number = 0;
+  ngoHelpedPeople: number = 0;
+  ngoContributors: number = 0;
+  ngoTeam: number = 0;
+  ngoCofounder: string = 'Loading...';
+  ngoCofounderImg: string = 'assets/imgs/background.png';
+  ngoUser: string = 'Loading...';
+  ngoDesc: string = 'Loading...';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.id = this.navParams.get('id');  
@@ -45,6 +54,15 @@ export class DashboardPage {
     this.http.get("http://ionic.dsl.house/heartAppApi/ngo-profile.php?id="+id).map(res => res.json()).subscribe(data => {
       this.ngoName = data.ngo_name;
       this.ngoImg = data.img_name;
+      this.ngoCampaigns = data.campaigns;
+      this.ngoHelpedPeople = data.helped_people;
+      this.ngoContributors = data.contributors;
+      this.ngoTeam = data.team;
+      this.ngoCofounder = data.ngo_founder;
+      this.ngoUser = data.ngo_user;
+      this.ngoDesc = data.ngo_desc;
+      this.ngoTagline = data.ngo_tagline;
+      this.ngoCofounderImg = data.ngo_founder_img;
       // console.log(data);
     }, err => {
       console.log('Oops!');
@@ -55,4 +73,5 @@ export class DashboardPage {
   getNgoId(id: number) {
     console.log('ngo id: '+id);
   }
+
 }

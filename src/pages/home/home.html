@@ -94,7 +94,7 @@
                         <img class="person" [src]="donation.img_name" [alt]="donation.ngo_name" (click)="getNgoId(donation.id)"/>
                     </ion-col>
                     <ion-col col-9>
-                        <p class="play-para">
+                        <p class="play-para" (click)="getNgoId(donation.id)">
                             <ion-icon name="play" class="play-icon"></ion-icon>Play message
                         </p>                    
                     </ion-col>
