@@ -15,7 +15,7 @@ export class DashboardPage {
   latestDonations: any;
 
   // variable id for ngo profile
-  id: any;
+  id: number;
   ngoName: string = 'Loading...';
   ngoTagline: string = 'Loading...';
   ngoImg: string = 'assets/imgs/background.png';
