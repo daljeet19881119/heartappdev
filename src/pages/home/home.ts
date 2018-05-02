@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Slides } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { DashboardPage } from '../dashboard/dashboard';
@@ -9,6 +9,8 @@ import { DashboardPage } from '../dashboard/dashboard';
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  @ViewChild(Slides) slides: Slides;
 
   // variable for goto dashboard page
   dashboard: any = DashboardPage;
@@ -55,6 +57,14 @@ export class HomePage {
     this.navCtrl.push(this.dashboard, {
       id: id
     });
+  }
+
+  ionViewWillLeave() {
+    this.slides.stopAutoplay();
+  }
+
+  ionViewDidEnter() {
+    this.slides.startAutoplay();
   }
 
 }

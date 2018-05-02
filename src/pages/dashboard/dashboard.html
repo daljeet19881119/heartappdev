@@ -16,24 +16,24 @@
 <ion-content style="padding:4px;">
   <ion-grid>
     <ion-row>
-      <ion-col col-4>        
+      <div class="left-img-div">        
         <img [src]="ngoCofounderImg" [alt]="ngoCofounder" class="ngo-img"/>
         <span class="row-data">{{ngoCofounder}}</span>
         <span><ion-icon name="heart-outline" class="heart-symbol"></ion-icon>{{ngoUser}}</span>
-      </ion-col>
-      <ion-col col-8 class="btn-col">
+      </div>
+      <div class="right-img-div">
         <ion-row style="background-color: #870226;text-align: center;">
           <ion-col col-4 no-padding>
-            <div [style.backgroundImage]="'url('+ngoImg+')'" class="banner-img"></div>
+            <div class="iframe-div">
+              <iframe src="https://www.youtube.com/embed/OfzGEcz6gS4" frameborder="0" allowfullscreen></iframe>
+            </div>            
           </ion-col>
           <ion-col col-8>
             <span class="banner-text">{{ngoName}}</span>
             <span class="banner-text">{{ngoTagline}}</span>
           </ion-col>
         </ion-row>
-        <button ion-button small color="AppHeader"><ion-icon name="logo-instagram"></ion-icon>&nbsp;&nbsp;Carousel</button>
-        <button ion-button small color="AppHeader">Edit Profile</button>
-      </ion-col>
+      </div>
     </ion-row>
     <ion-row>
       <ion-col col-12>
@@ -61,8 +61,8 @@
         </table>
     </ion-row>
     <ion-row>
-      <ion-col col-4 *ngFor="let donation of latestDonations">
-        <img [src]="donation.img_name" [alt]="donation.ngo_name" class="ngo-img" (click)="getNgoId(donation.id); showNgoProfile(donation.id)" [ngClass]="id == donation.id ? '2px solid #480226' : 'none'"/>
+      <ion-col col-3 *ngFor="let donation of latestDonations">
+        <img [src]="donation.img_name" [alt]="donation.ngo_name" class="ngo-small-img" (click)="getNgoId(donation.id); showNgoProfile(donation.id)" [ngClass]="id == donation.id ? '2px solid #480226' : 'none'"/>
       </ion-col>
     </ion-row>
   </ion-grid>
