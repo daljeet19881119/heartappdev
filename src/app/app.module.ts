@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SplashPage } from '../pages/splash/splash';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
   providers: [
     StatusBar,
     SplashScreen,
+    PhotoViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

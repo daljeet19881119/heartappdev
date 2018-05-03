@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -14,21 +16,27 @@ export class DashboardPage {
   // latestDonations array
   latestDonations: any;
 
+  // sotre ngoFamilyImgs array
+  ngoFamilyImgs: any;
+
   // variable id for ngo profile
   id: number;
   ngoName: string = 'Loading...';
   ngoTagline: string = 'Loading...';
   ngoImg: string = 'assets/imgs/background.png';
   ngoCampaigns: number = 0;
-  ngoHelpedPeople: number = 0;
+  ngoCommunity: number = 0;
   ngoContributors: number = 0;
   ngoTeam: number = 0;
   ngoCofounder: string = 'Loading...';
-  ngoCofounderImg: string = 'assets/imgs/background.png';
+  ngoCofounderImg: string = 'assets/imgs/background.png';  
   ngoUser: string = 'Loading...';
   ngoDesc: string = 'Loading...';
+  youtubeUrl: string = 'https://www.youtube.com/embed/';
+  ngoYoutubeId: string = 'iJr16_Wwcqg';
+  matched: string = 'matched';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer) {
     this.id = this.navParams.get('id');  
     
   }
@@ -36,6 +44,9 @@ export class DashboardPage {
   ionViewDidLoad() {
     // call function showNgoProfile
     this.showNgoProfile(this.id);
+
+    // call iframeUrl
+    this.iframeUrl();
 
     // request data from server
     this.http.get("http://ionic.dsl.house/heartAppApi/latest-donations.php").map(res => res.json()).subscribe(data => {
@@ -55,14 +66,17 @@ export class DashboardPage {
       this.ngoName = data.ngo_name;
       this.ngoImg = data.img_name;
       this.ngoCampaigns = data.campaigns;
-      this.ngoHelpedPeople = data.helped_people;
+      this.ngoCommunity = data.community;
       this.ngoContributors = data.contributors;
       this.ngoTeam = data.team;
       this.ngoCofounder = data.ngo_founder;
+      this.ngoCofounderImg = data.ngo_founder_img;
       this.ngoUser = data.ngo_user;
       this.ngoDesc = data.ngo_desc;
-      this.ngoTagline = data.ngo_tagline;
-      this.ngoCofounderImg = data.ngo_founder_img;
+      this.ngoYoutubeId = data.youtube_id;
+      this.ngoTagline = data.youtube_video_name;
+      this.ngoFamilyImgs = data.ngo_family_img;
+
       // console.log(data);
     }, err => {
       console.log('Oops!');
@@ -72,6 +86,27 @@ export class DashboardPage {
   // getNgoId
   getNgoId(id: number) {
     console.log('ngo id: '+id);
+    this.matched = '';
   }
 
+  // iframeUrl
+  iframeUrl() {    
+    return this.dom.bypassSecurityTrustResourceUrl(this.youtubeUrl + this.ngoYoutubeId);
+  }
+
+  // getYoutubeVideoImgUrl
+  getYoutubeVideoImgUrl() {
+    let url = 'https://img.youtube.com/vi/'+ this.ngoYoutubeId +'/hqdefault.jpg';
+    return url;
+  }
+
+  // showFullImage
+  showFullImage(imgUrl: string) {
+    this.photoViewer.show(imgUrl);
+  }
+
+  // showFullVideo
+  showFullVideo() {
+    console.log(this.ngoYoutubeId);
+  }
 }

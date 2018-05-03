@@ -50,8 +50,8 @@
                 <tbody>
                     <tr *ngFor="let payment of latestPayments">
                         <td>{{payment.date}}</td>
-                        <td>{{payment.balance}} <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></td>
-                        <td>{{payment.heart_amount}} <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> {{'($'+payment.us_amount+')'}}</td>
+                        <td><ion-icon name="heart-outline" class="heart-symbol"></ion-icon> {{payment.balance}}</td>
+                        <td><ion-icon name="heart-outline" class="heart-symbol"></ion-icon> {{payment.heart_amount}} {{'($'+payment.us_amount+')'}}</td>
                         <td>{{payment.type}}</td>
                     </tr>
                 </tbody>
@@ -83,7 +83,7 @@
                         <span class="row-data">{{donation.date}}</span>
                     </ion-col>
                     <ion-col col-5>
-                        <span class="row-data" style="font-size: 14px;">{{donation.heart_amount}} <ion-icon name="heart-outline" class="heart-symbol"></ion-icon> {{'($'+donation.us_amount+')'}}</span>
+                        <span class="row-data" style="font-size: 14px;"><ion-icon name="heart-outline" class="heart-symbol"></ion-icon> {{donation.heart_amount}} {{'($'+donation.us_amount+')'}}</span>
                     </ion-col>
                     <ion-col col-4>
                         <span class="row-data">{{donation.ngo_name}}</span>
@@ -91,7 +91,7 @@
                 </ion-row>
                 <ion-row>
                     <ion-col col-3>
-                        <img class="person" [src]="donation.img_name" [alt]="donation.ngo_name" (click)="getNgoId(donation.id)"/>
+                        <img class="person" [src]="donation.ngo_img" [alt]="donation.ngo_name" (click)="getNgoId(donation.id)"/>
                     </ion-col>
                     <ion-col col-9>
                         <p class="play-para" (click)="getNgoId(donation.id)">
