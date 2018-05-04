@@ -2,11 +2,16 @@
   <ion-navbar color="AppColor">
       <ion-grid>
           <ion-row>
-              <ion-col col-12 class="button-div">
-                    <button ion-button small color="AppHeader" class="more">
-                        <ion-icon name="settings"></ion-icon>
-                    </button>
+              <ion-col col-12>
+                  <button ion-fab mini class="facebook-btn" (click)="loginWithFB()">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </button>
               </ion-col>
+              <!-- <ion-col col-6 class="button-div">
+                  <button ion-button small color="AppHeader" class="more">
+                      <ion-icon name="settings"></ion-icon>
+                  </button>
+              </ion-col> -->
           </ion-row>
       </ion-grid>
   </ion-navbar>
@@ -70,7 +75,7 @@
     </ion-row>
     <ion-row>
       <ion-col col-3 *ngFor="let donation of latestDonations">
-        <img [src]="donation.ngo_founder_img" [alt]="donation.ngo_name" class="ngo-small-img" (click)="getNgoId(donation.id); showNgoProfile(donation.id)" [ngClass]="id == donation.id ? matched : ''"/>
+        <img [src]="donation.ngo_founder_img" [alt]="donation.ngo_name" class="ngo-small-img" (click)="getNgoId(donation.id); showNgoProfile(donation.id);" [ngClass]="id == donation.id ? matched : ''"/>
       </ion-col>
     </ion-row>
   </ion-grid>

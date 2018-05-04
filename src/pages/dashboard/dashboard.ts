@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { DomSanitizer } from '@angular/platform-browser';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @IonicPage()
 @Component({
@@ -37,7 +36,7 @@ export class DashboardPage {
   ngoYoutubeId: string = 'iJr16_Wwcqg';
   matched: string = 'matched';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer, private youtube: YoutubeVideoPlayer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer, private facebook: Facebook) {
     this.id = this.navParams.get('id');  
     
   }
@@ -90,6 +89,7 @@ export class DashboardPage {
     this.matched = '';
   }
 
+
   // iframeUrl
   iframeUrl() {    
     return this.dom.bypassSecurityTrustResourceUrl(this.youtubeUrl + this.ngoYoutubeId);
@@ -108,7 +108,6 @@ export class DashboardPage {
 
   // showFullVideo
   showFullVideo() {
-    this.youtube.openVideo(this.ngoYoutubeId);
   }
 
   // getWords
@@ -118,5 +117,11 @@ export class DashboardPage {
 
     // return only 30 character
     return this.youtubeVideoName.slice(0,25);
+  }
+
+
+  // loginWithFB
+  loginWithFB() {
+    this.facebook.login(['email','public_profile']).then((res: FacebookLoginResponse) => console.log('Logged into Facebook', res)).catch(e => console.log('Error logging into Facebook', e));
   }
 }

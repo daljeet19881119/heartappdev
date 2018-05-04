@@ -18,9 +18,12 @@
                 </ion-row>                                         
               </ion-col>
               <ion-col col-4 class="button-div">
-                    <button ion-button small color="AppHeader" class="more">
-                        <ion-icon name="settings"></ion-icon>
+                    <button ion-fab mini class="facebook-btn">
+                        <ion-icon name="logo-facebook"></ion-icon>
                     </button>
+                    <!-- <button ion-button small color="AppHeader" class="more">
+                        <ion-icon name="settings"></ion-icon>
+                    </button> -->
               </ion-col>
           </ion-row>
       </ion-grid>     
@@ -94,7 +97,7 @@
                         <img class="person" [src]="donation.ngo_img" [alt]="donation.ngo_name" (click)="getNgoId(donation.id)"/>
                     </ion-col>
                     <ion-col col-9>
-                        <p class="play-para" (click)="getNgoId(donation.id)">
+                        <p class="play-para">
                             <ion-icon name="play" class="play-icon"></ion-icon>Play message
                         </p>                    
                     </ion-col>
