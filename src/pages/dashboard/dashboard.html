@@ -24,14 +24,14 @@
       <div class="right-img-div">
         <ion-row style="background-color: #870226;text-align: center;">
           <ion-col col-5 no-padding>
-            <div class="iframe-div" (click)="showFullImage(iframeUrl())" [style.backgroundImage]="'url('+ getYoutubeVideoImgUrl() +')'">
+            <div class="iframe-div" (click)="showFullVideo()" [style.backgroundImage]="'url('+ getYoutubeVideoImgUrl() +')'">
               <!-- <iframe [src]="iframeUrl()" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts"></iframe> -->
               <ion-icon name="logo-youtube" class="youtube-icon"></ion-icon>
             </div>            
           </ion-col>
           <ion-col col-7>
             <span class="banner-text">{{ngoName}}</span>
-            <span class="banner-text">{{ngoTagline}}</span>
+            <span class="banner-text">{{getWords()+'.....'}}</span>
           </ion-col>
         </ion-row>
         <ion-row>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { DomSanitizer } from '@angular/platform-browser';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -22,7 +23,7 @@ export class DashboardPage {
   // variable id for ngo profile
   id: number;
   ngoName: string = 'Loading...';
-  ngoTagline: string = 'Loading...';
+  youtubeVideoName: string = 'Loading...';
   ngoImg: string = 'assets/imgs/background.png';
   ngoCampaigns: number = 0;
   ngoCommunity: number = 0;
@@ -36,7 +37,7 @@ export class DashboardPage {
   ngoYoutubeId: string = 'iJr16_Wwcqg';
   matched: string = 'matched';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer, private youtube: YoutubeVideoPlayer) {
     this.id = this.navParams.get('id');  
     
   }
@@ -74,9 +75,9 @@ export class DashboardPage {
       this.ngoUser = data.ngo_user;
       this.ngoDesc = data.ngo_desc;
       this.ngoYoutubeId = data.youtube_id;
-      this.ngoTagline = data.youtube_video_name;
+      this.youtubeVideoName = data.youtube_video_name;
       this.ngoFamilyImgs = data.ngo_family_img;
-
+      console.log('length: '+data.youtube_video_name.split(" ").length);
       // console.log(data);
     }, err => {
       console.log('Oops!');
@@ -107,6 +108,15 @@ export class DashboardPage {
 
   // showFullVideo
   showFullVideo() {
-    console.log(this.ngoYoutubeId);
+    this.youtube.openVideo(this.ngoYoutubeId);
+  }
+
+  // getWords
+  getWords() {
+    // return only 5 words
+    // return this.youtubeVideoName.split(/\s+/).slice(0,5).join(" ");
+
+    // return only 30 character
+    return this.youtubeVideoName.slice(0,25);
   }
 }

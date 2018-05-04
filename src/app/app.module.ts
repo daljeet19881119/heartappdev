@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { SplashPage } from '../pages/splash/splash';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
     StatusBar,
     SplashScreen,
     PhotoViewer,
+    YoutubeVideoPlayer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
