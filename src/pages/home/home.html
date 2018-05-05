@@ -18,9 +18,10 @@
                 </ion-row>                                         
               </ion-col>
               <ion-col col-4 class="button-div">
-                    <button ion-fab mini class="facebook-btn">
+                    <button ion-fab mini class="facebook-btn" *ngIf="!userData" (click)="loginWithFB()">
                         <ion-icon name="logo-facebook"></ion-icon>
                     </button>
+                    <button ion-fab mini class="profile-btn" *ngIf="userData" [style.backgroundImage]="'url('+ userData.picture +')'"></button>
                     <!-- <button ion-button small color="AppHeader" class="more">
                         <ion-icon name="settings"></ion-icon>
                     </button> -->

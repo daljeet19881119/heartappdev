@@ -19,6 +19,9 @@ export class DashboardPage {
   // sotre ngoFamilyImgs array
   ngoFamilyImgs: any;
 
+  // store fb user data
+  userData: any;
+
   // variable id for ngo profile
   id: number;
   ngoName: string = 'Loading...';
@@ -76,7 +79,7 @@ export class DashboardPage {
       this.ngoYoutubeId = data.youtube_id;
       this.youtubeVideoName = data.youtube_video_name;
       this.ngoFamilyImgs = data.ngo_family_img;
-      console.log('length: '+data.youtube_video_name.split(" ").length);
+
       // console.log(data);
     }, err => {
       console.log('Oops!');
@@ -108,6 +111,9 @@ export class DashboardPage {
 
   // showFullVideo
   showFullVideo() {
+    // store youtube video url
+    let videoUrl = this.youtubeUrl + this.ngoYoutubeId;
+    console.log(videoUrl);
   }
 
   // getWords
@@ -122,6 +128,13 @@ export class DashboardPage {
 
   // loginWithFB
   loginWithFB() {
-    this.facebook.login(['email','public_profile']).then((res: FacebookLoginResponse) => console.log('Logged into Facebook', res)).catch(e => console.log('Error logging into Facebook', e));
+    this.facebook.login(['email','public_profile']).then((res: FacebookLoginResponse) => {
+      this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+        this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
+      });
+    }).catch(e => {
+      console.log('Error logging into Facebook ', e);
+      alert('Error logging into Facebook');
+    });
   }
 }
