@@ -3,10 +3,13 @@
       <ion-grid>
           <ion-row>
               <ion-col col-12>
-                  <button ion-fab mini class="facebook-btn" *ngIf="!userData" (click)="loginWithFB()">
+                  <button ion-fab mini class="facebook-btn" *ngIf="!fbLogin" (click)="loginWithFB()">
                     <ion-icon name="logo-facebook"></ion-icon>
                   </button>
-                  <button ion-fab mini class="profile-btn" *ngIf="userData" [style.backgroundImage]="'url('+ userData.picture +')'"></button>
+                  <button ion-fab mini class="profile-btn" *ngIf="fbLogin" [style.backgroundImage]="'url('+ fbImage +')'"></button>
+                  <p class="fb-name" *ngIf="fbLogin">{{ fbName }}</p>
+                  <!-- <button ion-fab mini class="profile-btn" *ngIf="userData" [style.backgroundImage]="'url('+ userData.picture +')'"></button>
+                  <p class="fb-name" *ngIf="userData">{{ userData.first_name }}</p> -->
               </ion-col>
               <!-- <ion-col col-6 class="button-div">
                   <button ion-button small color="AppHeader" class="more">

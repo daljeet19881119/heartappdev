@@ -34,6 +34,11 @@ export class HomePage {
   // latestDonations array
   latestDonations: any;
 
+  // fb variables
+  fbLogin: boolean = false;
+  fbName: string;
+  fbImage: string;
+
   constructor(public navCtrl: NavController, public http: Http, private facebook: Facebook) {
     
     // request data from server
@@ -59,7 +64,10 @@ export class HomePage {
   getNgoId(id: number) {
     console.log('id: ',id);
     this.navCtrl.push(this.dashboard, {
-      id: id
+      id: id,
+      fbLogin: this.fbLogin,
+      fbName: this.fbName,
+      fbImage: this.fbImage
     });
   }
 
@@ -75,11 +83,13 @@ export class HomePage {
   loginWithFB() {
     this.facebook.login(['email','public_profile']).then((res: FacebookLoginResponse) => {
       this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
-        this.userData = {email: profile['email'], username: profile['name'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url']}
+        this.userData = {email: profile['email'], username: profile['name'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url']};
+        this.fbLogin = true;
+        this.fbName = profile['first_name'];
+        this.fbImage = profile['picture_large']['data']['url'];
       });
     }).catch(e => {
       console.log('Error logging into Facebook', e);
-      alert("Error logging into Facebook");
     });
   }
 }

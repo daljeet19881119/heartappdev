@@ -39,12 +39,24 @@ export class DashboardPage {
   ngoYoutubeId: string = 'iJr16_Wwcqg';
   matched: string = 'matched';
 
+  // facebook variables
+  fbName: string;
+  fbImage: string;
+  fbLogin: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer, private facebook: Facebook) {
-    this.id = this.navParams.get('id');  
-    
+    this.id = this.navParams.get('id'); 
+    this.fbLogin = this.navParams.get('fbLogin');
+
+    // check if fb login is true then show fbname and image
+    if(this.fbLogin == true){
+        this.fbName = this.navParams.get('fbName');
+        this.fbImage = this.navParams.get('fbImage');
+    }
   }
 
   ionViewDidLoad() {
+
     // call function showNgoProfile
     this.showNgoProfile(this.id);
 
@@ -130,11 +142,13 @@ export class DashboardPage {
   loginWithFB() {
     this.facebook.login(['email','public_profile']).then((res: FacebookLoginResponse) => {
       this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
-        this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
+        this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']};
+        this.fbLogin = true;
+        this.fbName = profile['first_name'];
+        this.fbImage = profile['picture_large']['data']['url'];
       });
     }).catch(e => {
       console.log('Error logging into Facebook ', e);
-      alert('Error logging into Facebook');
     });
   }
 }

@@ -2,7 +2,7 @@
   <ion-navbar color="AppColor">
       <ion-grid>
           <ion-row>
-              <ion-col col-8>
+              <ion-col col-7>
                 <span style="color: #fff;font-size: 16px;">Balance</span>
                 <ion-row>
                     <ion-col col-4 style="padding-left: 0px;padding-right: 0px;">
@@ -17,11 +17,12 @@
                     </ion-col>
                 </ion-row>                                         
               </ion-col>
-              <ion-col col-4 class="button-div">
+              <ion-col col-5 class="button-div">
                     <button ion-fab mini class="facebook-btn" *ngIf="!userData" (click)="loginWithFB()">
                         <ion-icon name="logo-facebook"></ion-icon>
-                    </button>
+                    </button>                    
                     <button ion-fab mini class="profile-btn" *ngIf="userData" [style.backgroundImage]="'url('+ userData.picture +')'"></button>
+                    <p class="fb-name" *ngIf="userData">{{ userData.first_name }}</p>
                     <!-- <button ion-button small color="AppHeader" class="more">
                         <ion-icon name="settings"></ion-icon>
                     </button> -->
