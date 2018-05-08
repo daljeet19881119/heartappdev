@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { YtvideoPage } from '../ytvideo/ytvideo';
 
 @IonicPage()
 @Component({
@@ -44,7 +45,7 @@ export class DashboardPage {
   fbImage: string;
   fbLogin: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer, private facebook: Facebook) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public http: Http, public photoViewer: PhotoViewer, private dom: DomSanitizer, private facebook: Facebook) {
     this.id = this.navParams.get('id'); 
     this.fbLogin = this.navParams.get('fbLogin');
 
@@ -126,6 +127,8 @@ export class DashboardPage {
     // store youtube video url
     let videoUrl = this.youtubeUrl + this.ngoYoutubeId;
     console.log(videoUrl);
+    let viewModal = this.modalCtrl.create(YtvideoPage, {videoUrl: videoUrl});
+    viewModal.present();
   }
 
   // getWords

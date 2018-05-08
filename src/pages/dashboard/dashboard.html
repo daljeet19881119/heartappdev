@@ -1,86 +1,79 @@
 <ion-header>
-  <ion-navbar color="AppColor">
-      <ion-grid>
-          <ion-row>
-              <ion-col col-12>
-                  <button ion-fab mini class="facebook-btn" *ngIf="!fbLogin" (click)="loginWithFB()">
-                    <ion-icon name="logo-facebook"></ion-icon>
-                  </button>
-                  <button ion-fab mini class="profile-btn" *ngIf="fbLogin" [style.backgroundImage]="'url('+ fbImage +')'"></button>
-                  <p class="fb-name" *ngIf="fbLogin">{{ fbName }}</p>
-                  <!-- <button ion-fab mini class="profile-btn" *ngIf="userData" [style.backgroundImage]="'url('+ userData.picture +')'"></button>
-                  <p class="fb-name" *ngIf="userData">{{ userData.first_name }}</p> -->
-              </ion-col>
-              <!-- <ion-col col-6 class="button-div">
-                  <button ion-button small color="AppHeader" class="more">
-                      <ion-icon name="settings"></ion-icon>
-                  </button>
-              </ion-col> -->
-          </ion-row>
-      </ion-grid>
-  </ion-navbar>
+	<ion-navbar color="AppColor">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-12>
+                        <button ion-fab mini class="facebook-btn" *ngIf="!fbLogin" (click)="loginWithFB()">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </button>
+                        <button ion-fab mini class="profile-btn" *ngIf="fbLogin" [style.backgroundImage]="'url('+ fbImage +')'"></button>
+                        <p class="fb-name" *ngIf="fbLogin">{{ fbName }}</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+	</ion-navbar>
 </ion-header>
 
 
 <ion-content style="padding:4px;">
-  <ion-grid>
-    <ion-row>
-      <div class="left-img-div">        
-        <img [src]="ngoCofounderImg" [alt]="ngoCofounder" class="ngo-img" (click)="getNgoId(id)"/>
-        <span class="row-data">{{ngoCofounder}}</span>
-        <span><ion-icon name="heart-outline" class="heart-symbol"></ion-icon>{{ngoUser}}</span>
-      </div>
-      <div class="right-img-div">
-        <ion-row style="background-color: #870226;text-align: center;">
-          <ion-col col-5 no-padding>
-            <div class="iframe-div" (click)="showFullVideo()" [style.backgroundImage]="'url('+ getYoutubeVideoImgUrl() +')'">
-              <!-- <iframe [src]="iframeUrl()" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts"></iframe> -->
-              <ion-icon name="logo-youtube" class="youtube-icon"></ion-icon>
-            </div>            
-          </ion-col>
-          <ion-col col-7>
-            <span class="banner-text">{{ngoName}}</span>
-            <span class="banner-text">{{getWords()+'.....'}}</span>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ng-container *ngFor="let familyImg of ngoFamilyImgs">
-              <ion-col col-3 class="family-imgs" *ngIf="ngoFamilyImgs?.length > 0">
-                  <div [style.backgroundImage]="'url('+ familyImg +')'" (click)="showFullImage(familyImg)"></div>
-                </ion-col>
-          </ng-container>          
-        </ion-row>
-      </div>
-    </ion-row> 
-    <ion-row>
-      <ion-col col-12>
-        <p class="desc">{{ngoDesc}}</p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-        <table>
-          <thead>
-              <tr>
-                  <th>{{ngoCampaigns}}</th>
-                  <th>{{ngoCommunity}}</th>
-                  <th>{{ngoContributors}}</th>
-                  <th>{{ngoTeam}}</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>Campagins</td>
-                  <td>Community</td>
-                  <td>Contributors</td>
-                  <td>Team</td>
-              </tr>
-          </tbody>
-        </table>
-    </ion-row>
-    <ion-row>
-      <ion-col col-3 *ngFor="let donation of latestDonations">
-        <img [src]="donation.ngo_founder_img" [alt]="donation.ngo_name" class="ngo-small-img" (click)="getNgoId(donation.id); showNgoProfile(donation.id);" [ngClass]="id == donation.id ? matched : ''"/>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+	<ion-grid>
+		<ion-row>
+			<div class="left-img-div">        
+				<img [src]="ngoCofounderImg" [alt]="ngoCofounder" class="ngo-img" (click)="getNgoId(id)"/>
+				<span class="row-data">{{ngoCofounder}}</span>
+				<span><ion-icon name="heart-outline" class="heart-symbol"></ion-icon>{{ngoUser}}</span>
+			</div>
+			<div class="right-img-div">
+				<ion-row style="background-color: #870226;text-align: center;">
+					<ion-col col-5 no-padding>
+						<div class="iframe-div" (click)="showFullVideo()" [style.backgroundImage]="'url('+ getYoutubeVideoImgUrl() +')'">
+							<!-- <iframe [src]="iframeUrl()" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts"></iframe> -->
+							<ion-icon name="logo-youtube" class="youtube-icon"></ion-icon>
+						</div>            
+					</ion-col>
+					<ion-col col-7>
+						<span class="banner-text">{{ngoName}}</span>
+						<span class="banner-text">{{getWords()+'.....'}}</span>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ng-container *ngFor="let familyImg of ngoFamilyImgs">
+                        <ion-col col-3 class="family-imgs" *ngIf="ngoFamilyImgs?.length > 0">
+                            <div [style.backgroundImage]="'url('+ familyImg +')'" (click)="showFullImage(familyImg)"></div>
+                        </ion-col>
+					</ng-container>          
+				</ion-row>
+			</div>
+		</ion-row> 
+		<ion-row>
+			<ion-col col-12>
+				<p class="desc">{{ngoDesc}}</p>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ngoCampaigns}}</th>
+                        <th>{{ngoCommunity}}</th>
+                        <th>{{ngoContributors}}</th>
+                        <th>{{ngoTeam}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Campagins</td>
+                        <td>Community</td>
+                        <td>Contributors</td>
+                        <td>Team</td>
+                    </tr>
+                </tbody>
+            </table>
+		</ion-row>
+		<ion-row>
+			<ion-col col-3 *ngFor="let donation of latestDonations">
+				<img [src]="donation.ngo_founder_img" [alt]="donation.ngo_name" class="ngo-small-img" (click)="getNgoId(donation.id); showNgoProfile(donation.id);" [ngClass]="id == donation.id ? matched : ''"/>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>

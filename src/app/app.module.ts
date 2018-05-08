@@ -11,13 +11,15 @@ import { SplashPage } from '../pages/splash/splash';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { Facebook } from '@ionic-native/facebook';
+import { YtvideoPage } from '../pages/ytvideo/ytvideo';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     DashboardPage,
-    SplashPage
+    SplashPage,
+    YtvideoPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { Facebook } from '@ionic-native/facebook';
     MyApp,
     HomePage,
     DashboardPage,
-    SplashPage
+    SplashPage,
+    YtvideoPage    
   ],
   providers: [
     StatusBar,

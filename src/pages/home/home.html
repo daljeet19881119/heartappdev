@@ -1,35 +1,32 @@
 <ion-header>
-  <ion-navbar color="AppColor">
-      <ion-grid>
-          <ion-row>
-              <ion-col col-7>
-                <span style="color: #fff;font-size: 16px;">Balance</span>
-                <ion-row>
-                    <ion-col col-4 style="padding-left: 0px;padding-right: 0px;">
-                        <span style="color: #fff;font-size: 14px;float:left">10.24K <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
-                    </ion-col>
-                    <ion-col col-8>
-                        <ion-slides autoplay="3000" loop="true">
-                            <ion-slide *ngFor="let slide of slideData">                            
-                                <span style="color: #fff;font-size: 13px;float:left">({{ slide.currency }})</span>
-                            </ion-slide>
-                        </ion-slides> 
-                    </ion-col>
-                </ion-row>                                         
-              </ion-col>
-              <ion-col col-5 class="button-div">
+    <ion-navbar color="AppColor">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-7>
+                    <span style="color: #fff;font-size: 16px;">Balance</span>
+                    <ion-row>
+                        <ion-col col-4 style="padding-left: 0px;padding-right: 0px;">
+                            <span style="color: #fff;font-size: 14px;float:left">10.24K <ion-icon name="heart-outline" class="heart-symbol"></ion-icon></span>
+                        </ion-col>
+                        <ion-col col-8>
+                            <ion-slides autoplay="3000" loop="true">
+                                <ion-slide *ngFor="let slide of slideData">                            
+                                    <span style="color: #fff;font-size: 13px;float:left">({{ slide.currency }})</span>
+                                </ion-slide>
+                            </ion-slides> 
+                        </ion-col>
+                    </ion-row>                                         
+                </ion-col>
+                <ion-col col-5 class="button-div">
                     <button ion-fab mini class="facebook-btn" *ngIf="!userData" (click)="loginWithFB()">
                         <ion-icon name="logo-facebook"></ion-icon>
                     </button>                    
                     <button ion-fab mini class="profile-btn" *ngIf="userData" [style.backgroundImage]="'url('+ userData.picture +')'"></button>
                     <p class="fb-name" *ngIf="userData">{{ userData.first_name }}</p>
-                    <!-- <button ion-button small color="AppHeader" class="more">
-                        <ion-icon name="settings"></ion-icon>
-                    </button> -->
-              </ion-col>
-          </ion-row>
-      </ion-grid>     
-  </ion-navbar>
+                </ion-col>
+            </ion-row>
+        </ion-grid>     
+    </ion-navbar>
 </ion-header>
 
 <ion-content style="padding:10px;">
