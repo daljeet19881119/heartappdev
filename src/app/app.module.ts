@@ -32,7 +32,7 @@ import { YtvideoPage } from '../pages/ytvideo/ytvideo';
     HomePage,
     DashboardPage,
     SplashPage,
-    YtvideoPage    
+    YtvideoPage 
   ],
   providers: [
     StatusBar,

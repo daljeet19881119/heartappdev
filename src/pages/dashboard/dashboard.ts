@@ -101,8 +101,19 @@ export class DashboardPage {
 
   // getNgoId
   getNgoId(id: number) {
-    console.log('ngo id: '+id);
+    
+    // empty the matched variable
     this.matched = '';
+
+    // store current id into params id
+    this.id = id;
+
+    // check if both mateched
+    if(this.id = id) {
+
+      // store mathced in matched variable
+      this.matched = 'matched';
+    }
   }
 
 

@@ -15,13 +15,14 @@ export class YtvideoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private dom: DomSanitizer) {
     
-    // get videoUrl
-    this.videoUrl = this.navParams.get('videoUrl');
-    console.log('ytvideo page url is: '+ this.videoUrl);
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad YtvideoPage');
+    // get videoUrl
+    this.videoUrl = this.navParams.get('videoUrl');
+    console.log('ytvideo page url is: '+ this.videoUrl);
   }
 
   // closeModal
